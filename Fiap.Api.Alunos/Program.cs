@@ -44,9 +44,9 @@ builder.Services.AddScoped<IIrrigacaoInteligenteService, IrrigacaoInteligenteSer
 
 #region AutoMapper
 
-// Configuração do AutoMapper
+// Configuraï¿½ï¿½o do AutoMapper
 var mapperConfig = new AutoMapper.MapperConfiguration(c => {
-    // Permite que coleções nulas sejam mapeadas
+    // Permite que coleï¿½ï¿½es nulas sejam mapeadas
     c.AllowNullCollections = true;
     // Permite que valores de destino nulos sejam mapeados
     c.AllowNullDestinationValues = true;
@@ -73,10 +73,10 @@ var mapperConfig = new AutoMapper.MapperConfiguration(c => {
 
 });
 
-// Cria o mapper com base na configuração definida
+// Cria o mapper com base na configuraï¿½ï¿½o definida
 IMapper mapper = mapperConfig.CreateMapper();
 
-// Registra o IMapper como um serviço singleton no container de DI do ASP.NET Core
+// Registra o IMapper como um serviï¿½o singleton no container de DI do ASP.NET Core
 builder.Services.AddSingleton(mapper);
 #endregion
 
@@ -132,19 +132,16 @@ builder.Services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefault
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    foreach (var description in app.DescribeApiVersions())
     {
-        foreach (var description in app.DescribeApiVersions())
-        {
-            options.SwaggerEndpoint(
-                $"/swagger/{description.GroupName}/swagger.json",
-                description.GroupName);
-        }
-    });
-}
+        options.SwaggerEndpoint(
+            $"/swagger/{description.GroupName}/swagger.json",
+            description.GroupName);
+    }
+});
 
 app.UseHttpsRedirection();
 
