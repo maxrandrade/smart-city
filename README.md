@@ -29,6 +29,9 @@ Este é um projeto responsável pelo monitoramento da cidade, através do regist
 3. Abra o Docker no computador.
 4. Importe o projeto descompactado para o **Microsoft Visual Studio**.
 5. Ao carregar o projeto, aparecerá no topo do menu a opção de executar o projeto utilizando o **Dockerfile**. Clique nesta opção.
+   
+   ![image](https://github.com/user-attachments/assets/b1ad2353-142f-43ff-a7cd-a5aa5591d5b0)
+
 
 O projeto será executado e o navegador será aberto automaticamente com a interface visual da API (**Swagger**).
 
@@ -38,7 +41,7 @@ Agora você pode testar a API através do navegador.
 
 É possível também copiar a URL do navegador e testar os endpoints utilizando o **Postman** ou **Insomnia**.
 
-A collection com todos os endpoints se encontra no arquivo: `Collection-API.zip`.
+No caso do Insomnia, existe uma collection com todos os endpoints que se encontra no arquivo: `Collection-API.zip`.
 
 ### Autenticação
 
