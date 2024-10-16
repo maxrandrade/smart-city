@@ -47,12 +47,18 @@ jobs:
         with:
           name: .net-app
 
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_263D651D309B4604A415F2A359FE47F4 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1BB1AD79D58841F8826DB5F17CA9CFCE }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_054D08F0CFFE48F7AF0866BF8185186A }}
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'staging-cidade-inteligente-max'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC4C71A330484700A2A5C279356D302C }}
           package: .
           
